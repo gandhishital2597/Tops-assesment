@@ -175,3 +175,275 @@ No mismatch between name, marks, and grade
 3. Easy to Use
 4. Scalability
 Easy to add more fields (age, roll no, etc.)
+
+Section B: Practical Coding Tasks
+
+1. Conditional Logic Implementation
+Design a “Study Mood Assistant” that:
+● Takes user input: hours studied today
+● Displays motivation messages based on conditions
+● Uses if-else ladder or switch case
+
+# Study Mood Assistant
+ANswer : 
+hours = float(input("Enter hours studied today: "))
+
+if hours == 0:
+    print("You didn’t study today. Start with just 1 hour tomorrow!")
+elif hours > 0 and hours <= 2:
+    print("Good start! Keep building your habit.")
+elif hours > 2 and hours <= 5:
+    print("Nice work! You're making solid progress.")
+elif hours > 5 and hours <= 8:
+    print("Excellent dedication! Stay consistent.")
+else:
+    print("Outstanding! You're a study machine!")
+
+Question 2 :
+2. Loops + Arrays
+Create a program that:
+● Accepts 7 days of screen time data
+● Calculates and prints:
+➔ Total screen time
+➔ Average screen time
+● Displays a warning if average exceeds healthy limit
+
+Answer : 
+# Screen Time Analyzer
+
+screen_time = []  # array (list) to store 7 days data
+
+# Input using loop
+for i in range(7):
+    hours = float(input(f"Enter screen time for Day {i+1}: "))
+    screen_time.append(hours)
+
+# Calculate total using loop
+total = 0
+for time in screen_time:
+    total += time
+
+# Calculate average
+average = total / 7
+
+# Output
+print("\nScreen Time Report")
+print("Total Screen Time:", total, "hours")
+print("Average Screen Time:", round(average, 2), "hours/day")
+
+# Condition check
+if average > 5:
+    print(" Warning: Your screen time is too high! Try to reduce it.")
+else:
+    print("Good job! Your screen time is within a healthy limit.")
+
+Question 3. Functions & Pointers
+Write a program to:
+● Swap two numbers using a user-defined function
+● Implement swapping using pointers
+● Explain why pass-by-reference is necessary here
+
+Answer : 
+# Function to swap two numbers
+def swap(a, b):
+    temp = a
+    a = b
+    b = temp
+    return a, b   # return swapped values
+
+# Main program
+x = int(input("Enter first number: "))
+y = int(input("Enter second number: "))
+
+print("\nBefore Swapping: x =", x, "y =", y)
+
+# Function call
+x, y = swap(x, y)
+
+print("After Swapping: x =", x, "y =", y)
+
+Important Note (Pointers in Python)
+Python does NOT support pointers like C (*, &)
+So we cannot directly implement pointer-based swapping
+Instead, Python uses object references
+
+How Swapping Works in Python
+When we pass variables to a function:
+Python passes references to objects
+But integers are immutable
+So changes inside function do NOT affect original variables
+That’s why we return values and reassign them
+Why “Pass-by-Reference” Concept is Important
+In Python:
+No explicit pass-by-reference
+Uses pass-by-object-reference
+To actually swap values:
+We return the swapped values
+Then assign back → x, y = swap(x, y)
+
+
+Question 4. File handling
+Build a program that:
+● Writes daily goals to a file
+● Reads and displays them on program restart
+● Uses correct file modes
+
+
+Answer : 
+# Daily Goals File Program
+
+# Step 1: Write goals to file
+def write_goals():
+    file = open("goals.txt", "a")   # append mode
+    n = int(input("How many goals do you want to add? "))
+
+    for i in range(n):
+        goal = input(f"Enter goal {i+1}: ")
+        file.write(goal + "\n")
+
+    file.close()
+
+
+# Step 2: Read and display goals
+def read_goals():
+    try:
+        file = open("goals.txt", "r")   # read mode
+        print("\n📋 Your Daily Goals:")
+
+        content = file.read()
+        if content:
+            print(content)
+        else:
+            print("No goals found.")
+
+        file.close()
+
+    except FileNotFoundError:
+        print("No file found. Add goals first!")
+
+
+# Main program
+print("1. Add Goals")
+print("2. View Goals")
+
+choice = int(input("Enter your choice: "))
+
+if choice == 1:
+    write_goals()
+elif choice == 2:
+    read_goals()
+else:
+    print("Invalid choice")
+
+File Modes Used
+"a" → Append mode
+Adds new goals without deleting old ones
+"r" → Read mode
+Reads and displays stored goals
+
+Section C: Mini Capstone Project
+Mini Project: Student Productivity Tracker
+Section C: Mini Capstone Project
+Mini Project: Student Productivity Tracker
+
+Objective
+Build a console-based Student Productivity Tracker that logs daily study hours and
+generates a weekly report.
+Your application must:
+1. Menu-driven program
+2. Log daily study hours
+3. Generate weekly report
+4. Store data using files
+
+ANswer : 
+import os
+
+FILE_NAME = "study_data.txt"
+
+# Function to log study hours
+def log_hours():
+    day = input("Enter day (e.g., Monday): ")
+    hours = input("Enter study hours: ")
+
+    with open(FILE_NAME, "a") as file:
+        file.write(day + "," + hours + "\n")
+
+    print("✅ Study hours logged successfully!\n")
+
+
+# Function to display weekly report
+def weekly_report():
+    if not os.path.exists(FILE_NAME):
+        print("❌ No data found!\n")
+        return
+
+    total_hours = 0
+    days_count = 0
+
+    print("\n📊 Weekly Report")
+    print("----------------------")
+
+    with open(FILE_NAME, "r") as file:
+        for line in file:
+            day, hours = line.strip().split(",")
+            hours = float(hours)
+
+            print(f"{day}: {hours} hours")
+            total_hours += hours
+            days_count += 1
+
+    if days_count > 0:
+        avg = total_hours / days_count
+    else:
+        avg = 0
+
+    print("----------------------")
+    print(f"Total Hours: {total_hours}")
+    print(f"Average per day: {avg:.2f}\n")
+
+
+# Main menu
+def main():
+    while True:
+        print("===== Student Productivity Tracker =====")
+        print("1. Log Study Hours")
+        print("2. View Weekly Report")
+        print("3. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            log_hours()
+        elif choice == "2":
+            weekly_report()
+        elif choice == "3":
+            print("👋 Exiting program...")
+            break
+        else:
+            print("❌ Invalid choice! Try again.\n")
+
+
+# Run program
+main()
+
+output :
+===== Student Productivity Tracker =====
+1. Log Study Hours
+2. View Weekly Report
+3. Exit
+Enter your choice: 1
+
+Enter day: Monday
+Enter study hours: 3
+✅ Study hours logged successfully!
+
+===== Student Productivity Tracker =====
+Enter your choice: 2
+
+📊 Weekly Report
+----------------------
+Monday: 3.0 hours
+Tuesday: 2.5 hours
+----------------------
+Total Hours: 5.5
+Average per day: 2.75
