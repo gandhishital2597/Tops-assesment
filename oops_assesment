@@ -1,0 +1,73 @@
+Introduction to OOPS Programming
+Section A: Concept Application (Theoretical – Scenario Based)
+
+Question 1. You are building a food delivery application. At which stage would you prefer
+using a compiler over an interpreter, and why? Explain based on execution
+speed, error detection and deployment
+
+Answer : 1. Execution Speed
+A compiled language (like Go, Rust, or Java) converts code to machine code before runtime. In a food delivery app, this matters for:
+
+Order dispatch algorithms — matching drivers to orders in milliseconds
+Real-time GPS tracking — processing thousands of concurrent location updates
+Peak load handling — Friday night surges with 10,000+ simultaneous orders
+
+Since there's no interpretation overhead at runtime, the CPU executes instructions directly — critical when latency directly impacts user experience.
+2. Error Detection
+Compiled languages perform static type checking at build time, catching errors before deployment:
+
+A type mismatch in payment calculation (e.g., passing a string where a float is expected) is caught before it reaches production
+Memory errors and null pointer issues are flagged early
+This is crucial because a bug in the payment or order routing service could mean financial loss or failed deliveries
+3. Deployment
+
+Code compiles into a single binary or artifact — easy to containerize (Docker) and deploy consistently
+No runtime dependency on an interpreter version across servers
+Ideal for microservices (order service, payment service) where you want predictable, stable deployments
+
+
+When to Use an Interpreter
+Best suited for: Admin dashboards, promo/coupon configuration scripts, and rapid feature prototyping
+1. Execution Speed
+Interpreted languages (Python, Ruby, JavaScript/Node.js) are slower at raw execution, but perfectly acceptable for:
+
+Internal tools (restaurant onboarding scripts, analytics dashboards)
+Low-frequency operations where 50ms vs 5ms doesn't matter
+
+2. Error Detection
+Errors surface only at runtime, which means:
+
+A bug in a promo code generator might only appear when a user applies a coupon
+Requires heavy test coverage to compensate — acceptable for non-critical paths
+
+3. Deployment
+
+Faster iteration cycle — no compile step means quicker updates to menu configs, pricing rules, or A/B test logic
+Great for scripting and automation (e.g., a Python script to bulk-update restaurant menus)
+
+Question2. You are asked to design a program that calculates employee salary with
+multiple conditions (bonus, tax, overtime). Which programming constructs
+would you combine to solve this efficiently?
+
+Answer : Functions — The Most Critical Construct
+ Functions
+A salary calculator has three distinct rules — bonus, tax, and overtime. Functions let you isolate each rule into its own block:
+def calculate_bonus(base, score):
+    if score >= 90:   return base * 0.20
+    elif score >= 75: return base * 0.10
+    else:             return 0
+
+def calculate_tax(gross):
+    if gross > 100000: return gross * 0.35
+    elif gross > 50000: return gross * 0.25
+    else:               return gross * 0.15
+
+def calculate_overtime(base, hours):
+    return (base / 2080) * 1.5 * hours
+
+def calculate_salary(base, hours, score):
+    gross = base + calculate_bonus(base, score) + calculate_overtime(base, hours)
+    return gross - calculate_tax(gross)
+
+# One clean call
+print(calculate_salary(50000, 10, 85))
