@@ -71,3 +71,107 @@ def calculate_salary(base, hours, score):
 
 # One clean call
 print(calculate_salary(50000, 10, 85))
+
+Question 3 :  While developing a menu-driven console application, why are loops
+preferred over conditional repetition? Explain which loop you would choose
+and why?
+Answer : 
+Why Loops Are Preferred Over Conditional Repetition
+1. Continuous Execution
+A menu should repeat automatically after each user action.
+Loops allow the program to run multiple times without rewriting code.
+A simple if condition runs only once, so it cannot maintain a continuous menu.
+
+Example: After placing an order, the menu should appear again — loops handle this easily.
+2. Better Control
+Loops provide control using:
+break → to exit the menu
+continue → to skip invalid input and show menu again
+This makes the program more interactive and user-friendly.
+
+3. Cleaner & Shorter Code
+Without loops, you would need to repeat the same code many times using if statements.
+Loops avoid redundancy and make code easy to maintain.
+
+while loop is the best choice
+Why while loop?
+1.Condition-based execution
+Runs until a condition becomes false
+Perfect for menus: run until user chooses Exit
+2.Unknown number of iterations
+You don’t know how many times the user will use the menu
+while loop handles this flexibility well
+3.Easy exit control
+You can stop the loop when user enters a specific choice (like 3 for Exit)
+
+Question 4. A student writes a program to calculate average marks using int variables
+and gets incorrect output. Identify the probable cause and explain how
+choosing the correct data type solves the issue.
+
+Answer : What Went Wrong?
+
+When calculating average:
+
+Average=Number of Subjects
+        Total Marks
+	​
+
+If both values are int, the result will also be treated as an integer.
+This causes loss of decimal (fractional) part. 
+Solution: Use Correct Data Type (float)
+Use float (decimal type) for average calculation
+It stores values like 87.67 correctly
+
+Why float Solves the Problem
+1. Accuracy
+Keeps decimal values → correct average
+2. Real-world correctness
+Marks average is often not a whole number
+3. Proper calculation
+Division result is stored exactly, not truncated
+Always choose data type based on the nature of data:
+
+Whole numbers → int
+Decimal values → float
+
+Question 5. You are debugging a program that complies successfully but crashes at
+runtime. Which category of error is this? Mention two debugging practices
+you would follow to resolve it.
+Answer : Type of Error
+
+This is a Runtime Error.
+
+Explanation:
+The program has no syntax errors (it compiles successfully )
+But it fails during execution 
+Common causes:
+Division by zero
+Invalid input
+Null/None reference
+Out-of-bounds access
+
+Two Debugging Practices
+1.  Use Print Statements / Logging
+Add print() statements to check variable values step-by-step
+Helps identify where the program is failing
+
+2. Use Debugger / Step Execution
+Run the program line by line
+Check how variables change during execution
+Tools: IDE debugger (breakpoints)
+
+Helps find the exact line causing crash
+
+Question 6. You need to store student records with name, marks, and grade.
+Why would you choose a structure over multiple arrays in this scenario?
+
+Answer : Why Choose Structure (or Class)?
+A structure (or class in Python) stores related data together.
+Advantage of Structure
+1. Data Organization
+All details of one student are stored in one place
+2. Better Data Integrity
+No mismatch between name, marks, and grade
+3. Easy to Use
+4. Scalability
+Easy to add more fields (age, roll no, etc.)
