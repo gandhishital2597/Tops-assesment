@@ -1,4 +1,8 @@
+DB and Python Framework
+Theme: Social Media Profile Manager
+
 Section A: Conceptual Understanding
+
 Question 1. Explain the Django Request-Response cycle and how it differs from a standard Python script execution.
 Answer :
 
