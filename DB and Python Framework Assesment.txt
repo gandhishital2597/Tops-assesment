@@ -1,0 +1,27 @@
+Section A: Conceptual Understanding
+Question 1. Explain the Django Request-Response cycle and how it differs from a standard Python script execution.
+Answer :
+
+Question 2. Why Django Model Fields Are More Robust than Python Dynamic Typing?
+Answer :
+Django model fields are safer, stricter, and more reliable for storing data
+While Python variables are flexible but can cause errors
+Python dynamic typing so You can store any type of data anytime
+Django model fields : You must define what type of data is allowed
+This prevents errors and keeps data correct
+Python (Dynamic Typing):
+age = 25
+age = "twenty five"
+Python allows this, but it can cause bugs later.
+Django Model Field: age = models.IntegerField()
+Only numbers are allowed
+If you try:age = "twenty five" : Django will give an error
+
+Why Django is More Robust (Strong)
+1.Validation : Checks data before saving (e.g., number, length)
+2.Data Safety : Wrong data cannot enter the database
+3.Structure : Data is stored in a proper format
+4.Fewer Errors : Problems are caught early
+Django model fields are more robust because they enforce data types
+and validation, ensuring data accuracy and preventing errors, unlike Python’s dynamic
+ typing which allows any type of value without checks.
