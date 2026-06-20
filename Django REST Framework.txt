@@ -1,0 +1,57 @@
+Django REST Framework
+Theme: Doctor Finder API
+Section A: Conceptual Understanding
+Que : 1. Explain why REST APIs are preferred for mobile and frontend-heavy apps.
+Answer:
+REST APIs act as a communication bridge between frontend (React, Angular, Mobile apps) and backend
+(Django, Node).
+Key reasons:
+Decoupling (Separation)
+Frontend and backend work independently → faster development.
+Multi-platform support
+Same API can serve:
+Mobile apps 📱
+Web apps 💻
+Third-party clients
+Lightweight (JSON format)
+REST uses JSON → faster and easy to parse.
+Scalability
+Stateless nature → each request is independent → easy to scale.
+Example:
+A doctor app → Mobile + Web both use same /api/doctors/
+
+Que : 2. Explain how serializers act as a validation layer and how to implement custom
+field-level validation.?
+Answer :
+In Django REST Framework, Serializers = Converter + Validator
+
+What they do:
+Convert model → JSON (serialization)
+Convert JSON → model (deserialization)
+Validate incoming data
+
+from rest_framework import serializers
+from .models import Doctor
+
+class DoctorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Doctor
+        fields = '__all__'
+
+Custom field-level validation:
+
+Que:3. Explain the importance of using appropriate HTTP status codes (201 Created vs
+200 OK) for API outcomes.
+Answer :
+Status codes tell the frontend what happened
+
+Common ones:
+200 OK → Data fetched successfully
+201 Created → New resource created
+400 Bad Request → Validation error
+404 Not Found → Data not found
+403 Forbidden → No permission
+Why it matters:
+Frontend handles response correctly
+Improves API clarity
+Helps debugging
