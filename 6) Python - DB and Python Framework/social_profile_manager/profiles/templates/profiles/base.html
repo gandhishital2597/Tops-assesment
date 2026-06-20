@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Social Profile Manager{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; color: #222; }
+        h1 { border-bottom: 2px solid #444; padding-bottom: 8px; }
+        nav a { margin-right: 15px; text-decoration: none; color: #2563eb; }
+        ul.profile-list { list-style: none; padding: 0; }
+        ul.profile-list li {
+            padding: 10px; border: 1px solid #ddd; border-radius: 6px;
+            margin-bottom: 8px; display: flex; justify-content: space-between;
+        }
+        .badge { font-size: 0.8em; padding: 2px 8px; border-radius: 10px; }
+        .badge-public { background: #dcfce7; color: #166534; }
+        .badge-private { background: #f3f4f6; color: #6b7280; }
+        form p { margin: 10px 0; }
+        .errorlist { color: #dc2626; }
+        button, .button {
+            background: #2563eb; color: white; border: none; padding: 8px 14px;
+            border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'profile_list' %}">All Profiles</a>
+        <a href="{% url 'profile_create' %}">Create Profile</a>
+        <a href="{% url 'profile_export_csv' %}">Export CSV</a>
+    </nav>
+    <h1>{% block heading %}Social Profile Manager{% endblock %}</h1>
+    {% block content %}{% endblock %}
+</body>
+</html>

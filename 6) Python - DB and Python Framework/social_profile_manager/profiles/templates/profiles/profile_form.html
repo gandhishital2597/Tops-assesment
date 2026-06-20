@@ -1,0 +1,11 @@
+{% extends 'profiles/base.html' %}
+{% block title %}{% if profile %}Edit{% else %}Create{% endif %} Profile{% endblock %}
+{% block heading %}{% if profile %}Edit Profile{% else %}Create Profile{% endif %}{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Profile</button>
+    </form>
+{% endblock %}

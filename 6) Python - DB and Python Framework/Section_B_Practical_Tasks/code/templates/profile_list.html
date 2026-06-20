@@ -1,0 +1,38 @@
+{% extends 'profiles/base.html' %}
+{% block title %}All Profiles{% endblock %}
+{% block heading %}All Profiles{% endblock %}
+
+{% block content %}
+    {# Section B, Task 4: loop through the QuerySet passed in as context #}
+    {# Section A, Q4: {% if %} toggles what's shown per-profile based on is_public #}
+
+    {% if profiles %}
+        <ul class="profile-list">
+            {% for profile in profiles %}
+                <li>
+                    <div>
+                        <strong>{{ profile.username }}</strong> &mdash; Age: {{ profile.age }}
+
+                        {% if profile.is_public %}
+                            <span class="badge badge-public">Public</span>
+                        {% else %}
+                            <span class="badge badge-private">Private</span>
+                        {% endif %}
+
+                        {# Conditional logic toggling visible content, not just a badge: #}
+                        {% if profile.is_public %}
+                            <br><small>{{ profile.bio|default:"No bio provided." }}</small>
+                        {% else %}
+                            <br><small><em>This profile's bio is hidden.</em></small>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <a href="{% url 'profile_edit' profile.pk %}">Edit</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No profiles yet. <a href="{% url 'profile_create' %}">Create the first one</a>.</p>
+    {% endif %}
+{% endblock %}
