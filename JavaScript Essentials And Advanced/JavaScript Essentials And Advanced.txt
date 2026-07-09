@@ -1,0 +1,9 @@
+Section A — Concept Application
+S.1 = SCENARIO
+You are building a food delivery app where each restaurant's details — name, cuisine
+type, and minimum order value — must remain constant throughout the session, but the
+currently selected dish should be updatable as the user browses the menu.
+
+Question: Which declaration keyword (var, let, or const) would you use for each variable — the
+restaurant name, the minimum order value, and the currently selected dish — and why? Explain
+how scope and reassignment rules influence your choices.
