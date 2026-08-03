@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 4 - Order Tracker with Persistence</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 480px; margin: 40px auto; padding: 0 16px; color: #1f2937; }
+  h1 { font-size: 1.25rem; }
+  ul#restaurantList { list-style: none; padding: 0; }
+  ul#restaurantList li { padding: 10px; margin-top: 6px; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; }
+  ul#restaurantList li:hover { background: #f1f5f9; }
+  li.favourite { font-weight: 700; background: #dbeafe; border-color: #93c5fd; }
+  #status { font-size: 0.9rem; color: #64748b; }
+  #errorMsg { color: #dc2626; font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>Restaurant List</h1>
+  <p id="status">Loading restaurants...</p>
+  <p id="errorMsg"></p>
+  <ul id="restaurantList"></ul>
+
+  <script src="SectionB_Task4_OrderTracker.js"></script>
+</body>
+</html>

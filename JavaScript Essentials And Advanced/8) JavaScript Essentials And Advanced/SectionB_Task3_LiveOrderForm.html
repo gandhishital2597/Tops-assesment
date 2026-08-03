@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 3 - Live Order Form</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 480px; margin: 40px auto; padding: 0 16px; color: #1f2937; }
+  h1 { font-size: 1.25rem; }
+  label { display: block; margin-top: 12px; font-size: 0.9rem; font-weight: 600; }
+  input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 6px; }
+  button { margin-top: 16px; padding: 10px 16px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; }
+  button:hover { background: #1d4ed8; }
+  .error { color: #dc2626; font-size: 0.85rem; min-height: 1.1em; margin-top: 4px; }
+  ul#cartList { margin-top: 20px; padding-left: 20px; }
+  ul#cartList li { padding: 4px 0; }
+</style>
+</head>
+<body>
+  <h1>Add Item to Cart</h1>
+
+  <label for="dishName">Dish Name</label>
+  <input type="text" id="dishName" placeholder="e.g. Paneer Tikka">
+  <p id="dishError" class="error"></p>
+
+  <label for="quantity">Quantity</label>
+  <input type="number" id="quantity" min="1" placeholder="e.g. 2">
+  <p id="qtyError" class="error"></p>
+
+  <button id="addToCartBtn">Add to Cart</button>
+
+  <h2>Cart</h2>
+  <ul id="cartList"></ul>
+
+  <script src="SectionB_Task3_LiveOrderForm.js"></script>
+</body>
+</html>
